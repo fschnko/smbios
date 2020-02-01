@@ -15,7 +15,7 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 | System Information                        | Type 1            |     ✔    |       ✔      |
 | Baseboard (or Module) Information         | Type 2            |     ✔    |              |
 | System Enclosure or Chassis               | Type 3            |     ⏳    |       ✔      |
-| Processor Information                     | Type 4            |     ⏳    |       ✔      |
+| Processor Information                     | Type 4            |     ✔    |       ✔      |
 | Memory Controller Information             | Type 5, Obsolete  |     ⏳    |              |
 | Memory Module Information                 | Type 6, Obsolete  |     ⏳    |              |
 | Cache Information                         | Type 7            |     ✔    |       ✔      |
