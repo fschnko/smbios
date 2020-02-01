@@ -1,5 +1,6 @@
 package smbios
 
+// Baseboard defines attributes of a system baseboard (Type 2)
 type Baseboard struct {
 	table
 }
