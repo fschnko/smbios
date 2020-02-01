@@ -1,3 +1,2 @@
 # internal files, that should be hidden for some reason.
 cmd/*
-smbios.go
