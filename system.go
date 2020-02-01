@@ -29,11 +29,11 @@ func (s *SystemInformation) SerialNumber() string {
 func (s *SystemInformation) UUID() UUID {
 	var uuid UUID
 	// time_low 4 bytes Low field of the timestamp
-	copy(uuid[:4], changeByteOrder(s.bytes(0x08, 4)))
+	copy(uuid[:4], s.rbytes(0x08, 4))
 	// time_mid 2 bytes Middle field of the timestamp
-	copy(uuid[4:6], changeByteOrder(s.bytes(0x0c, 2)))
+	copy(uuid[4:6], s.rbytes(0x0c, 2))
 	// time_hi_and_version 2 bytes High field of the timestamp multiplexed with the version number
-	copy(uuid[6:8], changeByteOrder(s.bytes(0x0e, 2)))
+	copy(uuid[6:8], s.rbytes(0x0e, 2))
 	// clock_seq_hi_and_reserved byte High field of the clock sequence multiplexed with the variant
 	copy(uuid[8:9], s.bytes(0x10, 1))
 	// clock_seq_low byte Low field of the clock sequence
@@ -42,14 +42,6 @@ func (s *SystemInformation) UUID() UUID {
 	copy(uuid[10:], s.bytes(0x12, 6))
 
 	return uuid
-}
-
-func changeByteOrder(data []byte) []byte {
-	result := make([]byte, len(data))
-	for i := 0; i < len(data); i++ {
-		result[i] = data[len(data)-1-i]
-	}
-	return result
 }
 
 // WakeUp returns the event that caused the system to power up.

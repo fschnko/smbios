@@ -47,10 +47,22 @@ func (t *table) str(offset int) string {
 	return ""
 }
 
+// bytes returns bytes in the direct order.
 func (t *table) bytes(offset, length int) []byte {
 	offset -= headOffset
 	if offset >= 0 && len(t.Data) > offset+length {
 		return t.Data[offset : offset+length]
 	}
 	return nil
+}
+
+// rbytes returns bytes in the reverse order.
+func (t *table) rbytes(offset, length int) []byte {
+	data := t.bytes(offset, length)
+
+	result := make([]byte, len(data))
+	for i := 0; i < len(data); i++ {
+		result[i] = data[len(data)-1-i]
+	}
+	return result
 }
