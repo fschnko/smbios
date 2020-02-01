@@ -7,30 +7,30 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 >
 > Currently, work in progress and have no deadlines. You can see the status of the work in the table below.
 
-# Status
+## Status
 
 | Table name                                | Type              | \*Status | \*\*Required |
-| ----------------------------------------- | ----------------- | :------: | :----------: |
-| BIOS Information                          | Type 0            |     ✔    |       ✔      |
-| System Information                        | Type 1            |     ✔    |       ✔      |
-| Baseboard (or Module) Information         | Type 2            |     ✔    |              |
-| System Enclosure or Chassis               | Type 3            |     ⏳    |       ✔      |
-| Processor Information                     | Type 4            |     ✔    |       ✔      |
-| Memory Controller Information             | Type 5, Obsolete  |     ⏳    |              |
-| Memory Module Information                 | Type 6, Obsolete  |     ⏳    |              |
-| Cache Information                         | Type 7            |     ✔    |       ✔      |
+|-------------------------------------------|-------------------|:--------:|:------------:|
+| BIOS Information                          | Type 0            |    ✔     |      ✔       |
+| System Information                        | Type 1            |    ✔     |      ✔       |
+| Baseboard (or Module) Information         | Type 2            |    ✔     |              |
+| System Enclosure or Chassis               | Type 3            |    ⏳     |      ✔       |
+| Processor Information                     | Type 4            |    ✔     |      ✔       |
+| Memory Controller Information             | Type 5, Obsolete  |    ⏳     |              |
+| Memory Module Information                 | Type 6, Obsolete  |    ⏳     |              |
+| Cache Information                         | Type 7            |    ✔     |      ✔       |
 | Port Connector Information                | Type 8            |          |              |
-| System Slots                              | Type 9            |          |       ✔      |
+| System Slots                              | Type 9            |          |      ✔       |
 | On Board Devices Information              | Type 10, Obsolete |          |              |
 | OEM Strings                               | Type 11           |          |              |
 | System Configuration Options              | Type 12           |          |              |
 | BIOS Language Information                 | Type 13           |          |              |
 | Group Associations                        | Type 14           |          |              |
 | System Event Log                          | Type 15           |          |              |
-| Physical Memory Array                     | Type 16           |          |       ✔      |
-| Memory Device                             | Type 17           |          |       ✔      |
+| Physical Memory Array                     | Type 16           |          |      ✔       |
+| Memory Device                             | Type 17           |          |      ✔       |
 | 32-Bit Memory Error Information           | Type 18           |          |              |
-| Memory Array Mapped Address               | Type 19           |          |       ✔      |
+| Memory Array Mapped Address               | Type 19           |          |      ✔       |
 | Memory Device Mapped Address              | Type 20           |          |              |
 | Built-in Pointing Device                  | Type 21           |          |              |
 | Portable Battery                          | Type 22           |          |              |
@@ -43,7 +43,7 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 | Electrical Current Probe                  | Type 29           |          |              |
 | Out-of-Band Remote Access                 | Type 30           |          |              |
 | Boot Integrity Services (BIS) Entry Point | Type 31           |          |              |
-| System Boot Information                   | Type 32           |          |       ✔      |
+| System Boot Information                   | Type 32           |          |      ✔       |
 | 64-Bit Memory Error Information           | Type 33           |          |              |
 | Management Device                         | Type 34           |          |              |
 | Management Device Component               | Type 35           |          |              |
@@ -59,6 +59,6 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 | Inactive                                  | Type 126          |          |              |
 | End-of-Table                              | Type 127          |          |              |
 
-> \* ⏳ - work in progress,  ✔ - done.
+> \* ⏳ - work in progress, ✔ - done.
 >
 > \*\* Beginning with SMBIOS version 2.3, compliant SMBIOS implementations include the base set of required structures and data within those structures.
