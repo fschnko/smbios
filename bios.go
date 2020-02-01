@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// BIOS represents the BIOS Information structure (Type 0).
 type BIOS struct {
 	table
 }
@@ -51,25 +52,10 @@ func biosTime(str string) time.Time {
 
 }
 
-// 09h 2.0+ BIOS ROM Size BYTE Varies (n) Size (n) where 64K * (n+1) is the size of the
-// physical device containing the BIOS, in
-// bytes.
-// FFh - size is 16MB or greater, see Extended
-// BIOS ROM Size for actual size
-// 18h 3.1+ Extended BIOS
-// ROM Size
-// WORD Bit Field Extended size of the physical device(s)
-// containing the BIOS, rounded up if needed.
-// Bits 15:14 Unit
-// 00b - megabytes
-// 01b - gigabytes
-// 10b - reserved
-// 11b - reserved
-// Bits 13:0 Size
-// Examples: a 16 MB device would be
-// represented as 0010h. A 48 GB device set
-// would be represented as
-// 0100_0000_0011_0000b or 4030h.
+// ROMSize returns size of the physical device(s) containing the BIOS, rounded up if needed.
+func (b *BIOS) ROMSize() MemorySize {
+	return b.size(0x09, 0x18)
+}
 
 // Characteristics returns which functions the BIOS supports:
 // PCI, PCMCIA, Flash, etc. (see 7.1.1).

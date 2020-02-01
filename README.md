@@ -11,7 +11,7 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 
 | Table name                                | Type              | \*Status | \*\*Required |
 | ----------------------------------------- | ----------------- | :------: | :----------: |
-| BIOS Information                          | Type 0            |     ⏳    |       ✔      |
+| BIOS Information                          | Type 0            |     ✔    |       ✔      |
 | System Information                        | Type 1            |     ⏳    |       ✔      |
 | Baseboard (or Module) Information         | Type 2            |     ⏳    |              |
 | System Enclosure or Chassis               | Type 3            |     ⏳    |       ✔      |

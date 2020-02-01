@@ -2,7 +2,7 @@ package smbios
 
 const (
 	// Bit 7 Chassis lock is present if 1.
-	_ChassisTypeLockMask = 0b10000000
+	_ChassisTypeLockMask = 0b_1000_0000
 	// Bits 6:0 Enumeration value; see below.
 	_ChassisTypeValueMask = _ChassisTypeLockMask ^ 0xff // invert chassis lock mask
 )
