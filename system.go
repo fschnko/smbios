@@ -1,6 +1,6 @@
 package smbios
 
-// SystemInformation represents a system information table.
+// SystemInformation represents a system information table (Type 1).
 type SystemInformation struct {
 	table
 }
@@ -25,7 +25,32 @@ func (s *SystemInformation) SerialNumber() string {
 	return s.str(0x07)
 }
 
-// 08h 2.1+ UUID 16 BYTEs Varies Universal unique ID number; see 7.2.1.
+// UUID returns an Universal unique ID number.
+func (s *SystemInformation) UUID() UUID {
+	var uuid UUID
+	// time_low 4 bytes Low field of the timestamp
+	copy(uuid[:4], changeByteOrder(s.bytes(0x08, 4)))
+	// time_mid 2 bytes Middle field of the timestamp
+	copy(uuid[4:6], changeByteOrder(s.bytes(0x0c, 2)))
+	// time_hi_and_version 2 bytes High field of the timestamp multiplexed with the version number
+	copy(uuid[6:8], changeByteOrder(s.bytes(0x0e, 2)))
+	// clock_seq_hi_and_reserved byte High field of the clock sequence multiplexed with the variant
+	copy(uuid[8:9], s.bytes(0x10, 1))
+	// clock_seq_low byte Low field of the clock sequence
+	copy(uuid[9:10], s.bytes(0x11, 1))
+	// Node 6 bytes Spatially unique node identifier
+	copy(uuid[10:], s.bytes(0x12, 6))
+
+	return uuid
+}
+
+func changeByteOrder(data []byte) []byte {
+	result := make([]byte, len(data))
+	for i := 0; i < len(data); i++ {
+		result[i] = data[len(data)-1-i]
+	}
+	return result
+}
 
 // WakeUp returns the event that caused the system to power up.
 // See 7.2.2.
