@@ -93,6 +93,7 @@ var _BIOSCharacteristics = _FlagDictionary128{
 	"Reserved",
 }
 
+// BIOSCharacteristics represents functions which the BIOS supports.
 type BIOSCharacteristics struct {
 	Low, Hight uint64
 }
@@ -104,6 +105,7 @@ func (c BIOSCharacteristics) String() string {
 	)
 }
 
+// Slice returns a list of characteristics.
 func (c BIOSCharacteristics) Slice() []string {
 	return _BIOSCharacteristics.slice(
 		_BIOSCharacteristicsHightMask&c.Hight,

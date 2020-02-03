@@ -43,7 +43,7 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 | Electrical Current Probe                  | Type 29           |          |              |
 | Out-of-Band Remote Access                 | Type 30           |          |              |
 | Boot Integrity Services (BIS) Entry Point | Type 31           |          |              |
-| System Boot Information                   | Type 32           |          |      ✔       |
+| System Boot Information                   | Type 32           |     ✔    |      ✔       |
 | 64-Bit Memory Error Information           | Type 33           |          |              |
 | Management Device                         | Type 34           |          |              |
 | Management Device Component               | Type 35           |          |              |
