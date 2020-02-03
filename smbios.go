@@ -84,3 +84,12 @@ func (exp *Explorer) Processor() *Processor {
 	}
 	return &Processor{}
 }
+
+func (exp *Explorer) SystemBootInformation() *SystemBoot {
+	for _, t := range exp.tables {
+		if t.Type == 32 {
+			return &SystemBoot{t}
+		}
+	}
+	return &SystemBoot{}
+}

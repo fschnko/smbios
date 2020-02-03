@@ -50,7 +50,7 @@ func (t *table) str(offset int) string {
 // bytes returns bytes in the direct order.
 func (t *table) bytes(offset, length int) []byte {
 	offset -= headOffset
-	if offset >= 0 && len(t.Data) > offset+length {
+	if offset >= 0 && len(t.Data) >= offset+length {
 		return t.Data[offset : offset+length]
 	}
 	return nil
@@ -65,4 +65,13 @@ func (t *table) rbytes(offset, length int) []byte {
 		result[i] = data[len(data)-1-i]
 	}
 	return result
+}
+
+// bytes returns bytes in the direct order.
+func (t *table) tail(offset int) []byte {
+	offset -= headOffset
+	if offset >= 0 && len(t.Data) > offset {
+		return t.Data[offset:]
+	}
+	return nil
 }
