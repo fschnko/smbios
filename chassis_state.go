@@ -10,6 +10,7 @@ var _ChassisState = _EnumDictionary{
 	"Non-recoverable",
 }
 
+// ChassisState represents a chassis State field.
 type ChassisState byte
 
 func (s ChassisState) String() string {

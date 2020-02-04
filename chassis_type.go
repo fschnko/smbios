@@ -46,26 +46,30 @@ var _ChassisType = _EnumDictionary{
 	"Stick PC",
 }
 
+// ChassisType represents the System Enclosure or Chassis Types field.
 type ChassisType byte
 
 func (ct ChassisType) String() string {
 	return _ChassisType.str(ct.Number())
 }
 
+// Number returns number of the chassis type.
 func (ct ChassisType) Number() int {
 	return int(ct & _ChassisTypeValueMask)
 }
 
+// ChassisLock shows the presence of the chassis lock.
 type ChassisLock byte
 
 func (cl ChassisLock) String() string {
-	if cl.Bool() {
+	if cl.Present() {
 		return "Present"
 	}
 	return "Not Present"
 }
 
-func (cl ChassisLock) Bool() bool {
+// Present returns true if chassis lock is present.
+func (cl ChassisLock) Present() bool {
 	return cl&_ChassisTypeLockMask != 0
 
 }

@@ -9,6 +9,7 @@ var _ChassisSecurityStatus = _EnumDictionary{
 	"External interface enabled",
 }
 
+// ChassisSecurityStatus represents a chassis Security Status field.
 type ChassisSecurityStatus byte
 
 func (s ChassisSecurityStatus) String() string {

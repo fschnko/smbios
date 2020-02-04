@@ -25,7 +25,7 @@ func New() (*Explorer, error) {
 	for _, s := range ss {
 		exp.tables = append(exp.tables, table{
 			Handle:  Handle(s.Header.Handle),
-			Type:    s.Header.Type,
+			Type:    TableType(s.Header.Type),
 			Length:  s.Header.Length,
 			Data:    s.Formatted,
 			Strings: s.Strings,

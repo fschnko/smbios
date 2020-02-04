@@ -12,7 +12,7 @@ const (
 const headOffset = 4
 
 type table struct {
-	Type    uint8
+	Type    TableType
 	Length  uint8
 	Handle  Handle
 	Data    []byte
