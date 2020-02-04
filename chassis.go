@@ -1,5 +1,6 @@
 package smbios
 
+// Chassis defines attributes of the system’s mechanical enclosure.
 type Chassis struct {
 	table
 }
@@ -77,35 +78,36 @@ func (c *Chassis) NumberPowerCords() byte {
 	return c.byte(0x12)
 }
 
-// 13h 2.3+ ContainedElementCount (n)
-// BYTE Varies Number of Contained Element records that
-// follow, in the range 0 to 255
-// Each Contained Element group comprises m
-// bytes, as specified by the Contained Element
-// Record Length field that follows. If no
-// Contained Elements are included, this field is
-// set to 0.
+// ContainedElementCount returns number of Contained Element records
+// that follow, in the range 0 to 255.
+// Each Contained Element group comprises m bytes, as specified
+// by the Contained Element Record Length field that follows.
+// If no elements are included, this field is set to 0.
+func (c *Chassis) ContainedElementCount() byte {
+	return c.byte(0x13)
+}
 
-// 14h 2.3+ Contained
-// Element
-// Record
-// Length (m)
-// BYTE Varies Byte length of each Contained Element record
-// that follows, in the range 0 to 255
-// If no Contained Elements are included, this
-// field is set to 0. For version 2.3.2 and later of
-// this specification, this field is set to at least 03h
-// when Contained Elements are specified.
+// ContainedElementRecordLength returns length of each Contained Element record
+// that follows, in the range 0 to 255.
+// If no Contained Elements are included, this field is set to 0.
+func (c *Chassis) ContainedElementRecordLength() byte {
+	return c.byte(0x014)
+}
 
-// 15h 2.3+ Contained
-// Elements
-// n * m
-// BYTEs
-// Varies Elements, possibly defined by other SMBIOS
-// structures, present in this chassis; see 7.4.4
-// for definitions
+// ContainedElements returns elements present in the chassis.
+func (c *Chassis) ContainedElements() []ChassisElement {
+	offset := 0x15
+	count, length := int(c.ContainedElementCount()), int(c.ContainedElementRecordLength())
 
-// 15h +
-// n*m
-// 2.7+ SKU Number BYTE STRING Number of null-terminated string describing the
-// chassis or enclosure SKU number
+	result := make([]ChassisElement, 0, count)
+	for i := 0; i >= count; i++ {
+		result = append(result, ChassisElement(c.bytes(offset, length)))
+		offset += length
+	}
+	return result
+}
+
+// SKUNumber returns the chassis or enclosure SKU number.
+func (c *Chassis) SKUNumber() string {
+	return c.str(0x15 + int(c.ContainedElementCount()*c.ContainedElementRecordLength()))
+}
