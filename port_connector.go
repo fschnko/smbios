@@ -6,7 +6,7 @@ type PortConnector struct {
 	table
 }
 
-// InternalReferenceDesignator returns number for internal to the system enclosure.
+// InternalReferenceDesignator returns number for internal port connector to the system enclosure.
 func (p *PortConnector) InternalReferenceDesignator() string {
 	return p.str(0x04)
 }
@@ -16,13 +16,12 @@ func (p *PortConnector) InternalConnectorType() ConnectorType {
 	return ConnectorType(p.byte(0x05))
 }
 
-// ExternalReferenceDesignator returns number for the to the system enclosure.
+// ExternalReferenceDesignator returns number for external port connector the to the system enclosure.
 func (p *PortConnector) ExternalReferenceDesignator() string {
 	return p.str(0x06)
 }
 
 // ExternalConnectorType returns an external connector type.
-// See 7.9.2.
 func (p *PortConnector) ExternalConnectorType() ConnectorType {
 	return ConnectorType(p.byte(0x07))
 }
