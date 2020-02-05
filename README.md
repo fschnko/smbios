@@ -19,7 +19,7 @@ It based on [System Management BIOS (SMBIOS) Reference Specification v.3.3.0](ht
 | Memory Controller Information             | Type 5, Obsolete  |    ⏳     |              |
 | Memory Module Information                 | Type 6, Obsolete  |    ⏳     |              |
 | Cache Information                         | Type 7            |    ✔     |      ✔       |
-| Port Connector Information                | Type 8            |          |              |
+| Port Connector Information                | Type 8            |    ✔     |              |
 | System Slots                              | Type 9            |          |      ✔       |
 | On Board Devices Information              | Type 10, Obsolete |          |              |
 | OEM Strings                               | Type 11           |          |              |
