@@ -85,6 +85,16 @@ func (exp *Explorer) Processor() *Processor {
 	return &Processor{}
 }
 
+func (exp *Explorer) PortConnectors() []*PortConnector {
+	result := make([]*PortConnector, 0)
+	for _, t := range exp.tables {
+		if t.Type == 8 {
+			result = append(result, &PortConnector{t})
+		}
+	}
+	return result
+}
+
 func (exp *Explorer) SystemBootInformation() *SystemBoot {
 	for _, t := range exp.tables {
 		if t.Type == 32 {
